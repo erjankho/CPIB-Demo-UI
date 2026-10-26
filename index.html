@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investigator Co-Pilot — CPIB Demo</title>
+    <meta
+      name="description"
+      content="Demo mock: case management workbench, POLE graph explorer and chronological evidence timeline for AI-assisted investigation."
+    />
+    <script>
+      // Apply the saved/preferred theme before paint to avoid a flash of
+      // the wrong theme on load. Kept in sync with AppContext's logic.
+      (function () {
+        try {
+          var stored = window.localStorage.getItem('cpib-copilot-theme');
+          var theme = stored === 'light' || stored === 'dark'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
